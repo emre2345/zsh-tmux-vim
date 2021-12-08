@@ -1,7 +1,6 @@
 set number
 syntax on
-
-colorscheme dracula
+set background=dark
 
 set cursorline
 " set cursorcolumn
@@ -37,15 +36,19 @@ filetype indent on
 call plug#begin('~/.vim/plugged')
 
 Plug 'preservim/nerdtree'
-Plug 'dracula/vim',{ 'as' :'dracula' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'dracula/vim',{ 'as' :'dracula' }
+Plug 'altercation/solarized'
+Plug 'tomlion/vim-solidity'
 
 call plug#end()
 
 " }}}
+
+" colorscheme dracula
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
@@ -53,10 +56,14 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 map <leader>gf :Files<CR>
 map <leader>gb :Buffers<CR>
+map <leader>sf :NERDTreeFind<CR>
 " map <leader>fc :FormatCode<CR>
 
 
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp5$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+let NERTTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal norelativenumber
 " }}}
 
 
